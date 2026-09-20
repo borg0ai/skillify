@@ -1,0 +1,12 @@
+{
+  "name": "skillify",
+  "private": true,
+  "type": "module",
+  "version": "0.1.1",
+  "packageManager": "pnpm@10.31.0",
+  "scripts": {
+    "test": "node --test test/validate-skill.test.mjs",
+    "validate": "node skillify/scripts/validate-skill.mjs skillify",
+    "check": "pnpm run test && pnpm run validate"
+  }
+}

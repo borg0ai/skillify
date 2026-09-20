@@ -4,16 +4,18 @@ Skillify is an Agent Skill package for creating, reviewing, and validating reusa
 
 ## Install
 
+Global install with symlink (do not pass `--copy`):
+
 ```bash
-npx skills add borg0ai/skillify --skill skillify -g
+npx skills add borg0ai/skillify -g -y
 ```
 
 ## Local validation
 
 ```bash
 node skillify/scripts/validate-skill.mjs skillify
+node --test test/validate-skill.test.mjs
 npx skills add ./skillify --list
-npx skills add ./skillify --skill skillify --agent codex --copy --yes
 ```
 
 ## Layout
