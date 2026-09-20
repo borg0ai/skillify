@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 1,
+  "skillId": "skillify",
+  "channel": "development",
+  "version": "0.1.0-dev.0",
+  "source": {
+    "repository": "https://github.com/borg0ai/skillify"
+  },
+  "updateManifestUrl": "https://borg0ai.github.io/skillify/skill-updates/skillify/stable.json"
+}

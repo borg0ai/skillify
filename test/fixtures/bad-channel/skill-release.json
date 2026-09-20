@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 1,
+  "skillId": "bad-channel",
+  "channel": "stable",
+  "version": "1.0.0-dev.1",
+  "source": {
+    "repository": "https://github.com/example/bad-channel"
+  },
+  "updateManifestUrl": "https://example.github.io/bad-channel/skill-updates/bad-channel/stable.json"
+}

@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 1,
+  "skillId": "other-skill",
+  "channel": "stable",
+  "version": "1.0.0",
+  "source": {
+    "repository": "https://github.com/example/other-skill"
+  },
+  "updateManifestUrl": "https://example.github.io/other-skill/skill-updates/other-skill/stable.json"
+}
