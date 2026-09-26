@@ -13,8 +13,9 @@ npx skills add borg0ai/skillify -g -y
 ## Local validation
 
 ```bash
-node skillify/scripts/validate-skill.mjs skillify
-node --test test/validate-skill.test.mjs
+pnpm test
+pnpm validate
+pnpm check
 npx skills add ./skillify --list
 ```
 

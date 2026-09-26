@@ -38,6 +38,20 @@ repository/
 
 For multiple skills, use `skills/<skill-name>/SKILL.md`. Keep each skill's references, scripts, assets, and `skill-release.json` inside its own directory.
 
+## Build a skill project
+
+When the user asks to create a skill project, build one complete directory before adding optional files:
+
+1. Choose one reusable capability and a lowercase hyphenated directory name.
+2. Create `<skill-name>/SKILL.md` with frontmatter whose `name` equals the directory name and whose `description` states capability plus a concrete `Use when ...` trigger.
+3. Create `<skill-name>/skill-release.json` with exact release keys. Use a stable version such as `0.1.0` with `channel: "stable"`, or a prerelease such as `0.1.0-dev.0` with `channel: "development"`.
+4. Add `<skill-name>/LICENSE`; add `references/`, `scripts/`, or `assets/` only when the skill instructions use them.
+5. Keep tests, fixtures, package-manager files, and repository documentation outside `<skill-name>/` unless runtime instructions require them.
+6. Run `node skillify/scripts/validate-skill.mjs <skill-name>` from the repository root, then run `npx skills add . --list` to verify discovery.
+7. Read every linked reference and execute every documented command that is safe to verify. Report failures verbatim; do not claim agent behavior from packaging checks alone.
+
+For a skill project with a Node runtime, put `package.json` inside `<skill-name>/` only when the installed skill needs it. Match its `version` to `skill-release.json`; otherwise keep package metadata at repository root for repository tests and tooling.
+
 ## Authoring workflow
 
 1. State one reusable capability. Reject project-specific history and one-off fixes.
