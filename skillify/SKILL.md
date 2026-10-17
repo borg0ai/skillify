@@ -1,6 +1,6 @@
 ---
 name: skillify
-description: Create, review, and validate reusable Agent Skills for npx skills using Archify-style layout, required skill-release.json identity, optional package.json, and a local validate-skill gate. Use when packaging or publishing a skill repository, fixing SKILL.md frontmatter, checking release-safe contents, or aligning a skill with npx skills discovery.
+description: Build Agent Skills that conform to the Agent Skills specification, then check Skillify's separate release-package conventions and npx skills discovery. Use when creating or reviewing SKILL.md skills, fixing spec mismatches, or packaging skills for distribution.
 license: MIT
 metadata:
   version: "0.1"
@@ -8,7 +8,9 @@ metadata:
 
 # Skillify
 
-Create small, discoverable Agent Skills that install cleanly through `npx skills`.
+Build Agent Skills that follow the [Agent Skills specification](https://agentskills.io/specification). Then check Skillify's separate packaging conventions and `npx skills` discovery.
+
+The standard defines `SKILL.md`, its required `name` and `description` frontmatter, and optional runtime resources. Skillify's `skill-release.json`, release-channel rules, and package-boundary checks are additional conventions; never present them as standard requirements.
 
 ## Core rule
 
@@ -43,11 +45,11 @@ For multiple skills, use `skills/<skill-name>/SKILL.md`. Keep each skill's refer
 When the user asks to create a skill project, build one complete directory before adding optional files:
 
 1. Choose one reusable capability and a lowercase hyphenated directory name.
-2. Create `<skill-name>/SKILL.md` with frontmatter whose `name` equals the directory name and whose `description` states capability plus a concrete `Use when ...` trigger.
+2. Create `<skill-name>/SKILL.md` with valid YAML frontmatter. Follow the specification's `name` constraints and write a `description` that explains capability and when to use it. Keep the instruction body focused on completing the skill's task.
 3. Create `<skill-name>/skill-release.json` with exact release keys. Use a stable version such as `0.1.0` with `channel: "stable"`, or a prerelease such as `0.1.0-dev.0` with `channel: "development"`.
 4. Add `<skill-name>/LICENSE`; add `references/`, `scripts/`, or `assets/` only when the skill instructions use them.
 5. Keep tests, fixtures, package-manager files, and repository documentation outside `<skill-name>/` unless runtime instructions require them.
-6. Run `node skillify/scripts/validate-skill.mjs <skill-name>` from the repository root, then run `npx skills add . --list` to verify discovery.
+6. When available, run `skills-ref validate <skill-name>` for Agent Skills specification validation. Run `node skillify/scripts/validate-skill.mjs <skill-name>` for Skillify packaging checks, then run `npx skills add . --list` to verify discovery.
 7. Read every linked reference and execute every documented command that is safe to verify. Report failures verbatim; do not claim agent behavior from packaging checks alone.
 
 For a skill project with a Node runtime, put `package.json` inside `<skill-name>/` only when the installed skill needs it. Match its `version` to `skill-release.json`; otherwise keep package metadata at repository root for repository tests and tooling.
@@ -89,7 +91,7 @@ Then verify:
 - README install command points at the real repository and skill name;
 - package contains no machine-specific absolute path.
 
-Read [skill-contract.md](references/skill-contract.md) for the compact contract. Report command output truthfully; a successful file copy is not proof that an agent follows the instructions.
+Read [skill-contract.md](references/skill-contract.md) for the standard/package boundary. The local validator checks Skillify's supported frontmatter subset and release-package rules; it is not a full YAML parser or a substitute for `skills-ref validate`. Report validation scope accurately; a successful file copy is not proof that an agent follows instructions.
 
 ## Common failures
 

@@ -1,6 +1,6 @@
 # Skill contract
 
-`SKILL.md` must contain YAML frontmatter with:
+The [Agent Skills specification](https://agentskills.io/specification) requires `SKILL.md` with YAML frontmatter. At minimum:
 
 ```yaml
 ---
@@ -24,7 +24,13 @@ description: Capability summary. Use when a concrete trigger occurs
 }
 ```
 
-Required checks:
+Agent Skills standard checks:
+
+- `name` uses the standard's allowed lowercase letters, digits, and hyphens; matches the skill directory; and has no leading, trailing, or consecutive hyphens.
+- `description` is non-empty and states what the skill does and when it applies.
+- Markdown body contains the instructions and optional references/resources needed for the task.
+
+Skillify packaging checks (additional to the standard):
 
 - `name` is unique, stable, and matches the skill directory and `skillId`.
 - `description` explains capability and activation conditions, not the full workflow.
